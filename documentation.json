@@ -836,7 +836,7 @@
         },
         {
             "name": "TaskComponent",
-            "id": "component-TaskComponent-4d89501b9bf86260f01967aa2efa8497",
+            "id": "component-TaskComponent-a9f4d1b6193b5d03fde79d27934bff51",
             "file": "src/app/components/task.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -846,13 +846,13 @@
             "selector": "app-task",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"list-item {{ task?.state }}\">\n  <label class=\"checkbox\">\n    <input\n      type=\"checkbox\"\n      [defaultChecked]=\"task?.state === 'TASK_ARCHIVED'\"\n      disabled=\"true\"\n      name=\"checked\"\n    />\n    <span class=\"checkbox-custom\" (click)=\"onArchive(task.id)\"></span>\n  </label>\n  <div class=\"title\">\n    <input\n      type=\"text\"\n      [value]=\"task?.title\"\n      readonly=\"true\"\n      placeholder=\"Input title\"\n    />\n  </div>\n  <div class=\"actions\">\n    <a *ngIf=\"task?.state !== 'TASK_ARCHIVED'\" (click)=\"onPin(task.id)\">\n      <span class=\"icon-star\"></span>\n    </a>\n  </div>\n</div>\n",
+            "template": "<div class=\"list-item {{ task?.state }}\">\n  <label class=\"checkbox\">\n    <input\n      type=\"checkbox\"\n      [defaultChecked]=\"task?.state === 'TASK_ARCHIVED'\"\n      disabled=\"true\"\n      name=\"checked\"\n    />\n    <span class=\"checkbox-custom\" (click)=\"onArchive(task.id)\"></span>\n  </label>\n  <div class=\"title\">\n    <input\n      type=\"text\"\n      [value]=\"task?.title\"\n      readonly=\"true\"\n      placeholder=\"Input title\"\n      style=\"text-overflow: ellipsis;\"\n    />\n  </div>\n  <div class=\"actions\">\n    <a *ngIf=\"task?.state !== 'TASK_ARCHIVED'\" (click)=\"onPin(task.id)\">\n      <span class=\"icon-star\"></span>\n    </a>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
                 {
                     "name": "task",
-                    "line": 35,
+                    "line": 36,
                     "type": "Task"
                 }
             ],
@@ -860,13 +860,13 @@
                 {
                     "name": "onArchiveTask",
                     "defaultValue": "new EventEmitter<Event>()",
-                    "line": 43,
+                    "line": 44,
                     "type": "EventEmitter"
                 },
                 {
                     "name": "onPinTask",
                     "defaultValue": "new EventEmitter<Event>()",
-                    "line": 39,
+                    "line": 40,
                     "type": "EventEmitter"
                 }
             ],
@@ -883,20 +883,20 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 57,
                     "description": "<p>Component method to trigger the onArchive event</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1366,
-                                "end": 1368,
+                                "pos": 1409,
+                                "end": 1411,
                                 "flags": 0,
                                 "escapedText": "id"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 1360,
-                                "end": 1365,
+                                "pos": 1403,
+                                "end": 1408,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -915,20 +915,20 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 50,
                     "description": "<p>Component method to trigger the onPin event</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1227,
-                                "end": 1229,
+                                "pos": 1270,
+                                "end": 1272,
                                 "flags": 0,
                                 "escapedText": "id"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 1221,
-                                "end": 1226,
+                                "pos": 1264,
+                                "end": 1269,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -942,7 +942,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n import { Task } from '../models/task.model';\r\n\r\n@Component({\r\n  selector: 'app-task',\r\n  template: `\r\n   <div class=\"list-item {{ task?.state }}\">\r\n     <label class=\"checkbox\">\r\n       <input\r\n         type=\"checkbox\"\r\n         [defaultChecked]=\"task?.state === 'TASK_ARCHIVED'\"\r\n         disabled=\"true\"\r\n         name=\"checked\"\r\n       />\r\n       <span class=\"checkbox-custom\" (click)=\"onArchive(task.id)\"></span>\r\n     </label>\r\n     <div class=\"title\">\r\n       <input\r\n         type=\"text\"\r\n         [value]=\"task?.title\"\r\n         readonly=\"true\"\r\n         placeholder=\"Input title\"\r\n       />\r\n     </div>\r\n     <div class=\"actions\">\r\n       <a *ngIf=\"task?.state !== 'TASK_ARCHIVED'\" (click)=\"onPin(task.id)\">\r\n         <span class=\"icon-star\"></span>\r\n       </a>\r\n     </div>\r\n   </div>\r\n  `,\r\n})\r\nexport class TaskComponent {\r\n @Input() task: Task;\r\n\r\n  // tslint:disable-next-line: no-output-on-prefix\r\n  @Output()\r\n  onPinTask = new EventEmitter<Event>();\r\n\r\n  // tslint:disable-next-line: no-output-on-prefix\r\n  @Output()\r\n  onArchiveTask = new EventEmitter<Event>();\r\n\r\n /**\r\n  * Component method to trigger the onPin event\r\n  * @param id string\r\n  */\r\n onPin(id: any) {\r\n   this.onPinTask.emit(id);\r\n }\r\n /**\r\n  * Component method to trigger the onArchive event\r\n  * @param id string\r\n  */\r\n onArchive(id: any) {\r\n   this.onArchiveTask.emit(id);\r\n }\r\n}",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n import { Task } from '../models/task.model';\r\n\r\n@Component({\r\n  selector: 'app-task',\r\n  template: `\r\n   <div class=\"list-item {{ task?.state }}\">\r\n     <label class=\"checkbox\">\r\n       <input\r\n         type=\"checkbox\"\r\n         [defaultChecked]=\"task?.state === 'TASK_ARCHIVED'\"\r\n         disabled=\"true\"\r\n         name=\"checked\"\r\n       />\r\n       <span class=\"checkbox-custom\" (click)=\"onArchive(task.id)\"></span>\r\n     </label>\r\n     <div class=\"title\">\r\n       <input\r\n         type=\"text\"\r\n         [value]=\"task?.title\"\r\n         readonly=\"true\"\r\n         placeholder=\"Input title\"\r\n         style=\"text-overflow: ellipsis;\"\r\n       />\r\n     </div>\r\n     <div class=\"actions\">\r\n       <a *ngIf=\"task?.state !== 'TASK_ARCHIVED'\" (click)=\"onPin(task.id)\">\r\n         <span class=\"icon-star\"></span>\r\n       </a>\r\n     </div>\r\n   </div>\r\n  `,\r\n})\r\nexport class TaskComponent {\r\n @Input() task: Task;\r\n\r\n  // tslint:disable-next-line: no-output-on-prefix\r\n  @Output()\r\n  onPinTask = new EventEmitter<Event>();\r\n\r\n  // tslint:disable-next-line: no-output-on-prefix\r\n  @Output()\r\n  onArchiveTask = new EventEmitter<Event>();\r\n\r\n /**\r\n  * Component method to trigger the onPin event\r\n  * @param id string\r\n  */\r\n onPin(id: any) {\r\n   this.onPinTask.emit(id);\r\n }\r\n /**\r\n  * Component method to trigger the onArchive event\r\n  * @param id string\r\n  */\r\n onArchive(id: any) {\r\n   this.onArchiveTask.emit(id);\r\n }\r\n}",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -1186,7 +1186,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/pure-task-list.stories.ts",
+                "file": "src/app/components/pure-inbox-screen.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -1194,7 +1194,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/pure-inbox-screen.stories.ts",
+                "file": "src/app/components/pure-task-list.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -1295,6 +1295,22 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "LongTitle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/task.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "longTitleString",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/task.stories.ts",
+                "type": "",
+                "defaultValue": "`This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`"
+            },
+            {
                 "name": "mock",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1362,17 +1378,17 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/pure-task-list.stories.ts",
-                "type": "Story<PureTaskListComponent>",
-                "defaultValue": "args => ({\r\n  props: {\r\n    ...args,\r\n    onPinTask: TaskStories.actionsData.onPinTask,\r\n    onArchiveTask: TaskStories.actionsData.onArchiveTask,\r\n  },\r\n})"
+                "file": "src/app/components/pure-inbox-screen.stories.ts",
+                "type": "Story<PureInboxScreenComponent>",
+                "defaultValue": "(args) => ({\r\n  component: PureInboxScreenComponent,\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/pure-inbox-screen.stories.ts",
-                "type": "Story<PureInboxScreenComponent>",
-                "defaultValue": "(args) => ({\r\n  component: PureInboxScreenComponent,\r\n  props: args,\r\n})"
+                "file": "src/app/components/pure-task-list.stories.ts",
+                "type": "Story<PureTaskListComponent>",
+                "defaultValue": "args => ({\r\n  props: {\r\n    ...args,\r\n    onPinTask: TaskStories.actionsData.onPinTask,\r\n    onArchiveTask: TaskStories.actionsData.onArchiveTask,\r\n  },\r\n})"
             },
             {
                 "name": "Template",
@@ -1439,6 +1455,22 @@
                     "defaultValue": "Template.bind({})"
                 },
                 {
+                    "name": "LongTitle",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/task.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "longTitleString",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/task.stories.ts",
+                    "type": "",
+                    "defaultValue": "`This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`"
+                },
+                {
                     "name": "Pinned",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -1453,6 +1485,32 @@
                     "file": "src/app/components/task.stories.ts",
                     "type": "Story<TaskComponent>",
                     "defaultValue": "args => ({\r\n  component: TaskComponent,\r\n  props: {\r\n    ...args,\r\n    onPinTask: actionsData.onPinTask,\r\n    onArchiveTask: actionsData.onArchiveTask,\r\n  },\r\n})"
+                }
+            ],
+            "src/app/components/pure-inbox-screen.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Error",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "type": "Story<PureInboxScreenComponent>",
+                    "defaultValue": "(args) => ({\r\n  component: PureInboxScreenComponent,\r\n  props: args,\r\n})"
                 }
             ],
             "src/app/components/pure-task-list.stories.ts": [
@@ -1495,32 +1553,6 @@
                     "file": "src/app/components/pure-task-list.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
-                }
-            ],
-            "src/app/components/pure-inbox-screen.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/pure-inbox-screen.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Error",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/pure-inbox-screen.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/pure-inbox-screen.stories.ts",
-                    "type": "Story<PureInboxScreenComponent>",
-                    "defaultValue": "(args) => ({\r\n  component: PureInboxScreenComponent,\r\n  props: args,\r\n})"
                 }
             ],
             "src/environments/environment.prod.ts": [
@@ -1817,6 +1849,26 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LongTitle",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "longTitleString",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
